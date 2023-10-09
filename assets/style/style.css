@@ -108,7 +108,7 @@ input[type="radio"] {
         border-radius: 50%;
         display: flex;
         align-items: center;
-        text-align: center;
+        justify-content: center;
     }
    
     .header {
@@ -216,7 +216,7 @@ input[type="radio"] {
     .remove-icon:hover {
         background-image: url(../images/hover-close.svg);
     }
-    .checked-terms{
+    .checked-terms {
         text-decoration: line-through 3px var(--danger-color);
         opacity: 0.8;
     }
