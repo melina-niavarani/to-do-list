@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/style/style.css">
+</head>
+<body>
+    <div id="app">
+        <header class="toper">
+            <div class="info">
+                <div class="date-holder">
+                    <div class="date"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="header">
+                    <h2 class="today">Today </h2>
+                    <button class="add-new" >Add New</button>
+                </div>
+                <input class="writing-tasks"  placeholder="Write a new task"/>
+            </div>
+        </header>
+        <main class="tasks-holder">
+            <div class="container">
+                <div class="all-tasks">
+                    <span>Tasks</span>
+                </div>
+                <div class="tasks">
+                    <ul id="list-element">
+                        <!-- <li class="tasks-list">
+                            <div class="d-flex">
+                                <input type="checkbox"  >
+                                <p></p>
+                            </div>
+                            <div class="remove-icon"  @click="remove"></div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
