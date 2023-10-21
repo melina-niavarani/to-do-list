@@ -15,17 +15,30 @@
                 </div>
             </div>
             <div class="container">
-                <div class="header">
-                    <h2 class="today">Today </h2>
-                    <button class="add-new" >Add New</button>
+                <h2 class="today">Today </h2>
+                <div class="add-container">
+                    <input class="writing-tasks"  placeholder="Write a new task"/>
+                    <button class="add-new" >Add</button>
                 </div>
-                <input class="writing-tasks"  placeholder="Write a new task"/>
             </div>
         </header>
         <main class="tasks-holder">
             <div class="container">
+                <div class="search-container">
+                    <input class="search"  placeholder="Search ..."/>
+                    <span class="search-icon"></span>
+                </div>
                 <div class="all-tasks">
                     <span>Tasks</span>
+                    <span id="delete-all">Delete All</span>
+                </div>
+                <div class="status">
+                    <span>Status:</span>
+                    <select class="select">
+                        <option value="Done">Done</option>
+                        <option value="Todo">Todo</option>
+                        <option value="All">All</option>
+                    </select>
                 </div>
                 <div class="tasks">
                     <ul id="list-element">

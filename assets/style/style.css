@@ -118,17 +118,22 @@ input[type="radio"] {
         margin-bottom: 30px;
     }
     .today {
-        margin-left: 20px;
-        text-align: center;
+        margin-block: 30px;
+        text-align: start;
         font-size: var(--xl-font-size);
     }
     .today span {
         font-size: var(--sm-font-size);
         color: var(--accent-color);
     }
+    .add-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .add-new {
         cursor: pointer;
-        padding: 12px 24px;
+        padding: 10px ;
         border-radius: 10px;
         border: none;
         font-size: var(--md-font-size);
@@ -141,17 +146,20 @@ input[type="radio"] {
         color: var(--accent-color);
         box-shadow: 0px 0px 11px var(--accent-color);
     }
-    .writing-tasks {
+    .writing-tasks{
+        margin-right: 10px;
         background-color: var(--primary-bg-color);
-        margin-left: 12px;
-        margin-bottom: 50px;
+        outline-color: var(--accent-color);
+        /* margin-bottom: 50px; */
+    }
+    .writing-tasks,
+    .search {
         width: 87vw;
         border-radius: var(--icon-border-radius);
         border: none;
         font-size: var(--md-font-size);
         padding-block: 10px;
         padding-left: 20px;
-        outline-color: var(--accent-color);
     }
     .writing-tasks::placeholder{
         background-color: var(--primary-bg-color); 
@@ -159,6 +167,38 @@ input[type="radio"] {
     }
 
     /* === Tasks=== */
+    .search-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0 20px;
+    }
+    .search {
+        background-color: var(--secondary-bg-color);
+        color: var(--secondary-font-color);
+        margin: 10px;
+    }
+    .search::placeholder {
+        background-color: var(--secondary-bg-color); 
+        width: 300px;
+        color: var(--secondary-font-color);
+    }
+    .search-icon{
+        background-image: url(../images/search.svg);
+        padding: 12px;
+        
+    }
+    .search-icon:hover {
+        background-image: url(../images/search-hover.svg);
+    }
+    .search-icon,
+    .remove-icon {
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+    }
     .tasks-holder{
         height: 100vh;
         margin-top: -10%;
@@ -167,20 +207,35 @@ input[type="radio"] {
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
     }
     .all-tasks{
-        margin-top: 18px;
-        padding: 18px 24px;
-        background-color: var(--secondary-bg-color);
-        display: inline-block;
+        display:flex;
+        justify-content: space-between;
+    }
+    .all-tasks span {
         border-radius: 8px;
-        color: var(--secondary-font-color);
+        font-size: var(--sm-font-size);
         font-weight: 700;
         text-align: center;
         line-height: 18px;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    .all-tasks span {
+        /* margin-top: 18px; */
+        padding: 18px 24px;
+        background-color: var(--secondary-bg-color);
         color: var(--accent-color);
+    }
+    #delete-all {
+        cursor: pointer;
+    }
+    .status {
+        margin-top: 30px;
+        font-weight: 500;
+        font-size: var(--md-font-size);
+    }
+    .select {
+        padding: 5px;
         font-size: var(--sm-font-size);
+        border-radius: 8px;
+        cursor: pointer;
+        color: inherit;
     }
     .tasks ul {
         list-style: none;
@@ -204,14 +259,10 @@ input[type="radio"] {
         margin-left: 10px;
         font-size: var(--md-font-size);
     }
+
     .remove-icon {
-        background-image: url(../images/icons8-close.svg);
-        height: 20px;
-        width: 20px;
-        background-repeat: no-repeat;
-        background-size: contain;
         padding: 8px;
-        cursor: pointer;
+        background-image: url(../images/icons8-close.svg);
     }
     .remove-icon:hover {
         background-image: url(../images/hover-close.svg);
@@ -223,12 +274,14 @@ input[type="radio"] {
     
 }
 @media (min-width:610px) {
-    .writing-tasks{
+    .writing-tasks,
+    .add-new {
         margin-bottom: 90px;
     }
 }
 @media (min-width:970px) {
-    .writing-tasks{
+    .writing-tasks,
+    .add-new {
         margin-bottom:120px;
     }
 }
@@ -239,7 +292,8 @@ input[type="radio"] {
         --lg-font-size: 30px;
         --xl-font-size: 32px;
     }
-    .writing-tasks{
+    .writing-tasks,
+    .add-new{
         margin-bottom:180px;
     }
     .all-tasks{
