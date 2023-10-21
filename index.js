@@ -138,6 +138,32 @@ function onDeleteAll(){
     renderList();
 }
 
+// ========= Filtering Tasks ======== ////
+const selectElement = document.querySelector(".select");
+selectElement.addEventListener("change", filterTasksByStatus)
+
+list.innerHTML = "";
+
+function filterTasksByStatus() {
+    const selectedStatus = selectElement.value
+    list.innerHTML = ""; 
+    if (selectedStatus === "All") {
+        renderList();
+    } else {
+        const filterTasks = todo_list.filter((item) => {
+            if (selectedStatus === "Done" && item.status === true) {
+                return true;
+            } else if (selectedStatus === "Todo" && item.status === false) {
+                return true;
+            }
+            return false;
+        });
+        filterTasks.forEach((item) => {
+            renderTasks(item);
+        })
+    }
+}
+
 //  ======= Run the App ======= //
 function onAddItem() {
     const input_value = input.value;
@@ -176,6 +202,8 @@ function init() {
     loadFromStorage();
     renderList();
     events();
+    selectElement.value = "All"; 
+    filterTasksByStatus();
 }
 
 
