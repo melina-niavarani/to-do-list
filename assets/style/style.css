@@ -176,7 +176,7 @@ input[type="radio"] {
     .search {
         background-color: var(--secondary-bg-color);
         color: var(--secondary-font-color);
-        margin: 10px;
+        margin-block: 20px;
     }
     .search::placeholder {
         background-color: var(--secondary-bg-color); 

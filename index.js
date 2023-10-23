@@ -10,6 +10,8 @@ let todo_list = [];
 // ======= Work with DOM ======== //
 
 function renderTasks(item) {
+    // const tasks_num = document.querySelector("#tasks-number")
+
     const tasks_list = document.createElement("li");
     tasks_list.classList.add("tasks-list");
     
@@ -46,14 +48,12 @@ function renderTasks(item) {
 function renderList(){
     // Remove old items:
     list.innerHTML = "";
-
     // Render items :
     /* Model 1:
      for ( let i=0; i < todo_list.length; i++){
         const title = todo_list[i];
         renderTasks(title);
     } */
-
     //  Model 2:
     todo_list.forEach((item) => {
         renderTasks(item);
@@ -98,6 +98,7 @@ function toggleStatus(title) {
     })
 
     syncStorage();
+
 }
  
 function addItem(item) {
@@ -140,8 +141,6 @@ function onDeleteAll(){
 
 // ========= Filtering Tasks ======== ////
 const selectElement = document.querySelector(".select");
-selectElement.addEventListener("change", filterTasksByStatus)
-
 list.innerHTML = "";
 
 function filterTasksByStatus() {
@@ -162,6 +161,23 @@ function filterTasksByStatus() {
             renderTasks(item);
         })
     }
+}
+
+// ======== Searching option ======= ////
+const searchInput = document.querySelector(".search");
+
+function filterTasksBySearch() {
+    const searchQuery = searchInput.value.toLowerCase();
+
+    list.innerHTML = ""; 
+
+    const filteredTasks = todo_list.filter((item) => {
+        return item.title.toLowerCase().includes(searchQuery);
+    });
+
+    filteredTasks.forEach((item) => {
+        renderTasks(item);
+    });
 }
 
 //  ======= Run the App ======= //
@@ -194,8 +210,10 @@ function onAddItem() {
 }
 
 function events() {
-    add_btn.addEventListener("click", onAddItem)
-    deleteAll.addEventListener("click", onDeleteAll)
+    add_btn.addEventListener("click", onAddItem);
+    deleteAll.addEventListener("click", onDeleteAll);
+    selectElement.addEventListener("change", filterTasksByStatus);
+    searchInput.addEventListener("input", filterTasksBySearch);
 }
 
 function init() {
@@ -204,9 +222,8 @@ function init() {
     events();
     selectElement.value = "All"; 
     filterTasksByStatus();
+    searchInput.value = "";
 }
-
-
 
 ///// ---------------- App Date ---------------- //////
 
