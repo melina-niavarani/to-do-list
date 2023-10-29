@@ -77,6 +77,23 @@ function loadFromStorage(){
     let listFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
     todo_list = listFromStorage;
 }
+
+// =========== Fetch Todo Lost ======= //
+
+const todo_list_api = "https://jsonplaceholder.typicode.com/todos"
+
+function fetchToDoList(){
+    fetch(todo_list_api).then((response) => {
+        return response.json()
+    }).then((data) => {
+        data.forEach((item) => {
+            renderTasks(item)
+            addItem(item)
+            syncStorage()
+        })
+    })
+
+}
  
 //  ======= Functionality ======== //
 
@@ -90,7 +107,6 @@ function toggleStatus(title) {
     //     }
         
     // }
-
     todo_list.forEach((item)=>{
         if(item.title === title){
             item.status = !item.status
@@ -218,6 +234,7 @@ function events() {
 
 function init() {
     loadFromStorage();
+    fetchToDoList();
     renderList();
     events();
     selectElement.value = "All"; 
@@ -255,6 +272,8 @@ screen_date.innerText = currentDate();
 //         }
 //     })
 // }
+
+
 
 
 // =========== init ==============  //
