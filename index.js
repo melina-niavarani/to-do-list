@@ -112,7 +112,6 @@ function toggleStatus(title) {
             item.status = !item.status
         }
     })
-
     syncStorage();
 
 }
@@ -142,6 +141,7 @@ function removeTask(title) {
     })
     syncStorage();
     renderList();
+    getTasksNum() 
 }
 
 function onDeleteAll(){ 
@@ -153,7 +153,17 @@ function onDeleteAll(){
 
     syncStorage();
     renderList();
+    getTasksNum() 
 }
+ // ============= Task number ========  //
+
+ function getTasksNum() {
+    const taskNum = document.querySelector("#tasks-number")
+    taskNum.innerText = todo_list.length +" " + "Tasks"
+    console.log(todo_list)
+ }
+
+
 
 // ========= Filtering Tasks ======== ////
 const selectElement = document.querySelector(".select");
@@ -221,22 +231,29 @@ function onAddItem() {
         addItem(item);
         syncStorage();
         renderTasks(item);
+        getTasksNum() 
         clearInput();
     }
 }
 
 function events() {
     add_btn.addEventListener("click", onAddItem);
+    input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            onAddItem();
+        }
+    })
     deleteAll.addEventListener("click", onDeleteAll);
     selectElement.addEventListener("change", filterTasksByStatus);
     searchInput.addEventListener("input", filterTasksBySearch);
 }
 
 function init() {
+    // fetchToDoList();
     loadFromStorage();
-    fetchToDoList();
     renderList();
     events();
+    getTasksNum() 
     selectElement.value = "All"; 
     filterTasksByStatus();
     searchInput.value = "";
@@ -253,26 +270,6 @@ function currentDate() {
 
 const screen_date = document.querySelector(".date");
 screen_date.innerText = currentDate();
-
-
-// -------------- if task cheched ------------- ////
-
-// const checkBox = document.querySelectorAll("input[type='checkbox']");
-// let checked = false; 
-
-// for (let i = 0; i < checkBox.length; i++) {
-//     checkBox[i].addEventListener ("click" , ()=>{
-//         console.log(i)
-//         if (!checked){
-//             const task = document.querySelectorAll('p');
-//             for (let j = 0; j < checkBox.length; j++) {
-//                 task[j].classList.toggle("checked-terms");
-//                 console.log(task[j])
-//             }
-//         }
-//     })
-// }
-
 
 
 
